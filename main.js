@@ -11,7 +11,7 @@ $.getJSON("https://api.coincap.io/v2/assets", function (data) {
 });
 
 // Get the price of USD to NGN
-$.getJSON("https://currencyapi.net/api/v1/rates?key=LBVkKQUAzg0GmMX8Y0HIUoUuXl0Ufk1iucxV", function (data) {
+$.getJSON("https://currencyapi.net/api/v1/rates?key=zlEK8WDsTQ43SR9nVOBXqTSXFVVddD7FLeZl", function (data) {
   $("#naira-equivalent").attr("usd-ngn-price", data.rates.NGN);
 });
 
