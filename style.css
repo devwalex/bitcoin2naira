@@ -63,3 +63,44 @@ body {
 :focus {
   outline: none;
 }
+
+
+.conversion-item{
+  /* padding: 20px; */
+  background-color: #ffffff;
+  border: 1px solid #05b169;
+  width: 200px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+  font-weight: 700;
+}
+
+.bg-light {
+  background-color: #ffffff!important;
+}
+
+.conversion-description{ border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px; -ms-border-radius: 25px; -o-border-radius: 25px;
+}
+ h2, h3{
+  font-weight: 600;
+}
+
+.btn{
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.footer .form-control{
+font-size: 1.25rem;
+height: 48px;
+}
+
+.w-70{
+  width: 70% !important;
+}
