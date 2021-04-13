@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <title>Bitcoin2Naira</title>
+    <title>Crypto2Naira</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand text-green" href="#">Bitcoin2Naira</a>
+        <a class="navbar-brand text-green" href="#">Crypto2Naira</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,7 +38,7 @@
     <div class="container mt-4">
       <div class="header">
         <h2 class="text-green">Bitcoin and Cryptocurrency Calculator</h2>
-        <p class="w-75">Bitcoin2Naira Bitcoin and Cryptocurrency Calculator determines the exchange rates between major fiat currencies and cryptocurrencies – including BTC, BCH, ETH and XRP to USD, EUR, GBP, IDR and NGN – with up to six decimal places of accuracy. Conversion rates are based on CoinDesk’s Bitcoin Price Index and the price indexes of other digital assets. World currency prices are based on rates obtained via Open Exchange Rates.</p>
+        <p class="w-75 sm-hide">Crypto2Naira Bitcoin and Cryptocurrency Calculator determines the exchange rates between major fiat currencies and cryptocurrencies – including BTC, BCH, ETH and XRP to USD, EUR, GBP, IDR and NGN – with up to six decimal places of accuracy. Conversion rates are based on CoinDesk’s Bitcoin Price Index and the price indexes of other digital assets. World currency prices are based on rates obtained via Open Exchange Rates.</p>
       </div>
 
       <div class="convert-section mt-5">
@@ -49,11 +49,12 @@
                 <select id="assets" style="width: 150px"></select>
               </div>
 
-              <input type="text" class="form-control" placeholder="0" value="1" id="asset-amount" />
+              <input type="text" class="form-control" placeholder="0" value="1" id="asset-amount" data-type="asset-amount"  />
               <div class="input-group-append">
                 <span class="input-group-text" id="asset-symbol">BTC</span>
               </div>
             </div>
+            <small class="text-danger" id="asset-symbol-error"></small>
           </div>
           <div class="col-md-6">
             <div class="input-group mb-3">
@@ -62,62 +63,108 @@
                 <span class="input-group-text">NGN</span>
               </div>
             </div>
+            <small class="text-danger" id="naira-equivalent-error"></small>
+
           </div>
         </div>
       </div>
 
       <div class="popular-conversion mt-5">
         <h3 class="mb-4">Popular Conversions</h3>
+
+        <!-- <div class="d-flex flex-wrap justify-content-between">
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/btc.png" alt="" width="20" class="mb-1" /> BTC
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/eth.png" alt="" width="20" class="mb-1" /> ETH
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/bnb.png" alt="" width="20" class="mb-1" /> BNB
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/btc.png" alt="" width="20" class="mb-1" /> BTC
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/eth.png" alt="" width="20" class="mb-1" /> ETH
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+
+          <div class="conversion-item px-3 py-2 text-center mb-3">
+            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/bnb.png" alt="" width="20" class="mb-1" /> BNB
+            <span class="text-muted px-2">to</span>
+            NGN
+          </div>
+        </div> -->
+        
         <div class="row">
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="btc">
               <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/btc.png" alt="" width="20" class="mb-1" /> BTC
-              <span class="text-muted px-3">to</span>
+              <span class="text-muted px-2">to</span>
               NGN
             </div>
           </div>
 
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="eth">
               <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/eth.png" alt="" width="20" class="mb-1" /> ETH
-              <span class="text-muted px-3">to</span>
+              <span class="text-muted px-2">to</span>
               NGN
             </div>
           </div>
 
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="bnb">
               <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/bnb.png" alt="" width="20" class="mb-1" /> BNB
-              <span class="text-muted px-3">to</span>
+              <span class="text-muted px-2">to</span>
+              NGN
+            </div>
+          </div>
+
+
+
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="xrp">
+              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/xrp.png" alt="" width="20" class="mb-1" /> XRP
+              <span class="text-muted px-2">to</span>
+              NGN
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="usdt">
+              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/usdt.png" alt="" width="20" class="mb-1" /> USDT
+              <span class="text-muted px-1">to</span>
+              NGN
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6 mb-3">
+            <div class="conversion-item px-3 py-2 text-center" data-asset-type="dot">
+              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/dot.png" alt="" width="20" class="mb-1" /> DOT
+              <span class="text-muted px-2">to</span>
               NGN
             </div>
           </div>
         </div>
-        <div class="row mt-4">
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
-              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/btc.png" alt="" width="20" class="mb-1" /> BTC
-              <span class="text-muted px-3">to</span>
-              NGN
-            </div>
-          </div>
+        <!-- <div class="row mt-4">
 
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
-              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/eth.png" alt="" width="20" class="mb-1" /> ETH
-              <span class="text-muted px-3">to</span>
-              NGN
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-2">
-            <div class="conversion-item px-3 py-2 text-center">
-              <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@9ab8d6934b83a4aa8ae5e8711609a70ca0ab1b2b/32/color/bnb.png" alt="" width="20" class="mb-1" /> BNB
-              <span class="text-muted px-3">to</span>
-              NGN
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="conversion-description mt-5 mb-5 bg-light p-5">
@@ -128,13 +175,13 @@
         <h2 class="text-green mt-5 mb-3">Bitcoin - Nigerian Naira Currency Calculator</h2>
         <p>You have currently selected the base currency Bitcoin and the target currency Nigerian naira with an amount of 1 Bitcoin. In the menu, you can select the desired exchange rates of about 160 international currencies from the two lists. Additionally, the currency calculator allows you to calculate historical exchange rates in addition to the current rate. The results are displayed in a table with the closing rate of the previous day, the opening rate as well as the lowest and highest rates of the respective date.</p>
       </div>
-      
+
 
       <div class="footer mt-5 mb-5">
         <div class="row">
           <div class="col-md-6">
             <h4>
-              Buy Bitcoin at affordable rates on Bitcoin2Naira.
+              Buy Bitcoin at affordable rates on Crypto2Naira.
             </h4>
           </div>
           <div class="col-md-6">

@@ -69,13 +69,14 @@ body {
   /* padding: 20px; */
   background-color: #ffffff;
   border: 1px solid #05b169;
-  width: 200px;
+  width: 165px;
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
   -o-border-radius: 30px;
   font-weight: 700;
+  /* min-width: 180px; */
 }
 
 .bg-light {
@@ -103,4 +104,30 @@ height: 48px;
 
 .w-70{
   width: 70% !important;
+}
+
+/* .w-30{
+  width: 30% !important;
+} */
+
+.col-sm-6{
+  width: 50% !important;
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 24px;
+  }
+  .sm-hide{
+    display: none;
+  }
+  .w-70{
+    width: 60% !important;
+  }
+}
+@media (max-width: 768px) {
+.w-75{
+  width: 100% !important;
+}
+
 }
